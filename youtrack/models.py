@@ -83,7 +83,7 @@ class Connection:
             'wikifyDescription': wikify_desc
         }
         if updated_after:
-            params['updatedAfter'] = updated_after.timestamp()
+            params['updatedAfter'] = updated_after.timestamp() * 1000
         return self._parse_issues_list(self._get('/issue/byproject/{}'.format(project_id), params))
 
     def get_issues(self, filters=[], with_fields=[], count=10, after=0):
@@ -125,7 +125,7 @@ class Connection:
             'authorLogin': author,
         }
         if created:
-            params['created'] = created.timestamp()
+            params['created'] = created.timestamp() * 1000
         return self._create_object(Attachment, self._post('/issue/{}/attachment'.format(issue_id), params=params,
                                                           files={filename: data}))
 
