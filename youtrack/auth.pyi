@@ -1,0 +1,19 @@
+from requests import Request
+from requests.auth import AuthBase
+
+
+class YouTrackAuth(AuthBase): ...
+
+
+class PasswordAuth(YouTrackAuth): ...
+
+
+class Oauth2Auth(YouTrackAuth): ...
+
+
+class TokenAuth(YouTrackAuth):
+    token: str = ...
+
+    def __init__(self, token: str) -> None: ...
+
+    def __call__(self, r: Request) -> Request: ...
