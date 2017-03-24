@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 
 from youtrack import __version__, __author__
 
