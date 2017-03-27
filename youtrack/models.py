@@ -43,6 +43,9 @@ class Connection:
     def _put(self, path, data=None, params=None, **kwargs):
         return self._session.put(self.base_url + path, data, params=params, **kwargs)
 
+    def _delete(self, path, **kwargs):
+        return self._session.delete(self.base_url + path, **kwargs)
+
     def _create_object(self, cls, data):
         return cls(data, self)
 
@@ -117,6 +120,9 @@ class Connection:
         if attachments:
             req_kwargs['files'] = [('attachments', x) for x in attachments.items()]
         return self._put('/issue', params=params, **req_kwargs)
+
+    def delete_issue(self, issue_id):
+        return self._delete('/issue/{}'.format(issue_id))
 
     def create_attachment(self, issue_id, filename, data, author=None, created=None, group=None):
         params = {
@@ -213,3 +219,6 @@ class Issue(YoutrackObject):
 
     def create_attachment(self, filename, data, author=None, created=None, group=None):
         return self._connection.create_attachment(self['id'], filename, data, author, created, group)
+
+    def delete(self):
+        return self._connection.delete_issue(self['id'])

@@ -1,6 +1,8 @@
 YouTrack JSON REST API client library
 ======
 
+[![PyPI](https://img.shields.io/pypi/v/youtrack-rest-api.svg)](https://pypi.python.org/pypi/youtrack-rest-api) [![PyPI](https://img.shields.io/pypi/pyversions/youtrack-rest-api.svg)](https://pypi.python.org/pypi/youtrack-rest-api)
+
 Current implementation is compatible with Python 3 and YouTrack 2017.1 or higher.  
 Authentication for old YouTrack versions will be realized later. 
 
